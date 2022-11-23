@@ -2,8 +2,6 @@ version: '3.8'
 
 services:
 
-
-
     frontend:
         container_name: frontend
         build:
@@ -71,7 +69,7 @@ services:
             MERCURE_PUBLISHER_JWT_KEY: '!ChangeMe!'
             MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeMe!'
             MERCURE_EXTRA_DIRECTIVES:
-                cors_origins "http://localhost:3000"
+                cors_origins "http://localhost:3001"
                 cors_origins "http://localhost:8245"
         # anonymous
         # Uncomment the following line to enable the development mode

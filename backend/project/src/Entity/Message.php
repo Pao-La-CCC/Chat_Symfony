@@ -24,6 +24,9 @@ class Message
     #[ORM\JoinColumn(nullable: false)]
     private ?User $authorUser = null;
 
+    #[ORM\ManyToOne(inversedBy: 'conversations')]
+    private ?ChatRoom $chatRoom = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +64,18 @@ class Message
     public function setAuthorUser(?User $authorUser): self
     {
         $this->authorUser = $authorUser;
+
+        return $this;
+    }
+
+    public function getChatRoom(): ?ChatRoom
+    {
+        return $this->chatRoom;
+    }
+
+    public function setChatRoom(?ChatRoom $chatRoom): self
+    {
+        $this->chatRoom = $chatRoom;
 
         return $this;
     }

@@ -1,38 +1,57 @@
 .App {
-  text-align: center;
+    width: 100vw;
+    height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+ul.router-element { 
+    background-color: rgb(162, 162, 162);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+ul.router-element li {
+    display: inline-block;
+}
+ul.router-element li a {
+    padding: 1em;
+    display: block;
+    text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/**   INSCRIPTION & LOGIN */
+
+.registration-container {
+    min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+.registration-container  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    height: 500px;
+}
+.register-form {
+    width: 500px;
+    padding: 1em 2em;
+    border-radius: 10px;
+    height: max-content;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.register-form h3{
+    text-align: center;
+}
+
+.register-form h3{
+    text-align: center;
 }

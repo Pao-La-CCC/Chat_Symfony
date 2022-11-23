@@ -32,9 +32,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'authorUser', targetEntity: Message::class, orphanRemoval: true)]
     private Collection $messagesId;
 
+    #[ORM\ManyToMany(targetEntity: ChatRoom::class, mappedBy: 'users')]
+    private Collection $chatRooms;
+
     public function __construct()
     {
         $this->messagesId = new ArrayCollection();
+        $this->chatRooms = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -132,6 +136,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             if ($messagesId->getAuthorUser() === $this) {
                 $messagesId->setAuthorUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ChatRoom>
+     */
+    public function getChatRooms(): Collection
+    {
+        return $this->chatRooms;
+    }
+
+    public function addChatRoom(ChatRoom $chatRoom): self
+    {
+        if (!$this->chatRooms->contains($chatRoom)) {
+            $this->chatRooms->add($chatRoom);
+            $chatRoom->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChatRoom(ChatRoom $chatRoom): self
+    {
+        if ($this->chatRooms->removeElement($chatRoom)) {
+            $chatRoom->removeUser($this);
         }
 
         return $this;

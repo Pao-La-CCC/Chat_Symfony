@@ -43,9 +43,8 @@ services:
             - db-data:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: 'db_datas'
             MYSQL_USER: root
-            MYSQL_PASSWORD: root
+            MYSQL_PASSWORD: PassChangeMeLater
         networks:
             - dev
 
@@ -59,7 +58,7 @@ services:
             - "8080:80"
         environment:
             - PMA_HOST=db
-            - PMA_PASSWORD=root
+            - PMA_PASSWORD=PassChangeMeLater
         networks:
             - dev
 

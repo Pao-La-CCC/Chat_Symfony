@@ -11,7 +11,7 @@ services:
         volumes:
             - ./frontend/ui-app:/app
         ports:
-            - 3001:3000
+            - 3000:3000
         depends_on:
             - symfony
         networks:
@@ -25,13 +25,13 @@ services:
         ports:
             - "8245:80"
         volumes:
-            - ./backend/config:/etc/apache2/sites-enabled
+            - ./backend/config/site.conf:/etc/nginx/http.d/default.conf
             - ./backend/project:/var/www/html
         restart: always
         networks:
             - dev
         depends_on:
-          - db
+            - db
 
     db:
         image: mariadb:10.8.2
@@ -69,7 +69,7 @@ services:
             MERCURE_PUBLISHER_JWT_KEY: '!ChangeMe!'
             MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeMe!'
             MERCURE_EXTRA_DIRECTIVES:
-                cors_origins "http://localhost:3001"
+                cors_origins "http://localhost:3000"
                 cors_origins "http://localhost:8245"
         # anonymous
         # Uncomment the following line to enable the development mode
